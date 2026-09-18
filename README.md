@@ -469,16 +469,22 @@ assets/js/data/wordbook-cet6.js
 ## 致谢
 
 感谢以下开源项目、公开资源与公开接口：
+
 •	mahavivo/english-wordlists
 四级 / 六级大纲词表来源，经 tools/build-wordbook.mjs 生成本项目内置词书。
+
 •	Free Dictionary API / dictionaryapi.dev
 可选的真人录音发音源，开源项目。
+
 •	jsDelivr
 开源 CDN，词库构建时用于拉取公开词表。
+
 •	有道词典 dictvoice、百度翻译 TTS
 公开发音接口，非开源项目，但为本项目自动发音链路提供了重要支持。
+
 •	浏览器 Web API
 SpeechSynthesis、Web Audio、Canvas 等，为本项目提供发音兜底、音效合成与走势图绘制能力。
+
 •	设计参考
 界面参考 Monkeytype 的极简打字反馈、Duolingo 的学习风主题思路。
 
