@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 10 226 226" width="226" height="226" role="img" aria-label="单词冲刺 WordRush">
+  <!--
+    单词冲刺 / WordRush —— 站点图标（纯图标，方形）
+    取自主视觉稿左侧图形，去掉了外层的 scale(0.85)，让图形填满方形画布。
+    viewBox 是按旋转后包围盒（含描边外扩）精确计算出来的：
+      内容 x∈[14.1, 173.0]  y∈[20.2, 225.2]  中心 (93.5, 122.7)
+      当前 viewBox 中心 (93, 123)，四周留白约 4.5%，不会被裁切。
+    想改配色，改下面 4 个 stop-color 即可。
+  -->
+  <defs>
+    <linearGradient id="wrGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3EE6C4"/>
+      <stop offset="35%" stop-color="#4A9BFF"/>
+      <stop offset="70%" stop-color="#9B6BFF"/>
+      <stop offset="100%" stop-color="#FF7A9E"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="rotate(-12 120 130)">
+    <!-- 速度线 -->
+    <line x1="14" y1="150" x2="58" y2="150" stroke="#4A9BFF" stroke-width="8" stroke-linecap="round" opacity="0.35"/>
+    <line x1="6"  y1="176" x2="64" y2="176" stroke="#9B6BFF" stroke-width="8" stroke-linecap="round" opacity="0.35"/>
+    <line x1="20" y1="202" x2="70" y2="202" stroke="#3EE6C4" stroke-width="8" stroke-linecap="round" opacity="0.35"/>
+    <!-- 扫帚柄（先画，根部会被 W 盖住） -->
+    <line x1="120" y1="125" x2="139" y2="30"
+          stroke="url(#wrGrad)" stroke-width="16" stroke-linecap="round"/>
+    <!-- W 主体 -->
+    <path d="M 70 100 L 95 180 L 120 125 L 145 180 L 170 100"
+          fill="none" stroke="url(#wrGrad)" stroke-width="18"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- 刷毛 -->
+    <line x1="95"  y1="180" x2="85"  y2="208" stroke="url(#wrGrad)" stroke-width="9" stroke-linecap="round"/>
+    <line x1="145" y1="180" x2="153" y2="208" stroke="url(#wrGrad)" stroke-width="9" stroke-linecap="round"/>
+  </g>
+</svg>

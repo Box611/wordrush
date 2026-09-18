@@ -1,0 +1,30 @@
+# 操作系统产生的垃圾文件
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# 编辑器配置
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 日志与临时文件
+*.log
+npm-debug.log*
+*.tmp
+*.bak
+
+# 依赖（本项目零依赖，这里只是防止误提交）
+node_modules/
+
+# 个人备份数据（练习记录属于个人数据，不应该进仓库）
+wordrush-backup-*.json
+wordrush-backup-*.json
+
+# 词库生成脚本下载的原始文件（属于缓存，跑一次 tools/build-wordbook.mjs 就会重新拉取）
+tools/raw/

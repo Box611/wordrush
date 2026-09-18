@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" width="640" height="240" role="img" aria-label="单词冲刺 WordRush">
+  <!--
+    单词冲刺 / WordRush —— 完整标志（图标 + 中英文名）
+    用于 README 展示、分享图、仓库头像等场合。
+    纯图标版本见 assets/favicon.svg（网站图标）。
+  -->
+  <defs>
+    <linearGradient id="wrGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3EE6C4"/>
+      <stop offset="35%" stop-color="#4A9BFF"/>
+      <stop offset="70%" stop-color="#9B6BFF"/>
+      <stop offset="100%" stop-color="#FF7A9E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 左侧图标 -->
+  <g transform="translate(0,0) scale(0.85)">
+    <g transform="rotate(-12 120 130)">
+      <!-- 速度线 -->
+      <line x1="14" y1="150" x2="58" y2="150" stroke="#4A9BFF" stroke-width="8" stroke-linecap="round" opacity="0.35"/>
+      <line x1="6"  y1="176" x2="64" y2="176" stroke="#9B6BFF" stroke-width="8" stroke-linecap="round" opacity="0.35"/>
+      <line x1="20" y1="202" x2="70" y2="202" stroke="#3EE6C4" stroke-width="8" stroke-linecap="round" opacity="0.35"/>
+      <!-- 扫帚柄：加长，底部接 W 中间尖峰（先画，会被 W 盖住根部） -->
+      <line x1="120" y1="125" x2="139" y2="30"
+            stroke="url(#wrGrad2)" stroke-width="16" stroke-linecap="round"/>
+      <!-- W 主体（后画，盖住柄的根部） -->
+      <path d="M 70 100 L 95 180 L 120 125 L 145 180 L 170 100"
+            fill="none" stroke="url(#wrGrad2)" stroke-width="18"
+            stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- 刷毛 -->
+      <line x1="95"  y1="180" x2="85"  y2="208"
+            stroke="url(#wrGrad2)" stroke-width="9" stroke-linecap="round"/>
+      <line x1="145" y1="180" x2="153" y2="208"
+            stroke="url(#wrGrad2)" stroke-width="9" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- 右侧文字 -->
+  <text x="240" y="118"
+        font-family="Segoe UI, Helvetica, Arial, sans-serif"
+        font-size="76" font-weight="800"
+        fill="url(#wrGrad2)" letter-spacing="1">WordRush</text>
+  <text x="244" y="166"
+        font-family="PingFang SC, Microsoft YaHei, sans-serif"
+        font-size="30" font-weight="500"
+        fill="#7A8199" letter-spacing="6">单词冲刺</text>
+</svg>
