@@ -4,7 +4,7 @@
   <img src="assets/logo.svg" alt="单词冲刺 WordRush" width="420">
 </p>
 
-一个**纯前端、零后端、零依赖**的单词冲刺 WordRush。面向英语四六级学习，同时支持任意自定义内容。
+使用WorkBuddy制作的一个**纯前端、零后端、零依赖**的单词冲刺 WordRush。面向英语四六级学习，同时支持任意自定义内容。
 
 打开网页就能练 —— 不用安装、不用注册、不用服务器，所有数据都存在你自己的浏览器里。
 
@@ -724,8 +724,24 @@ assets/js/data/wordbook-cet6.js
 
 ## 致谢
 
-- 内置练习内容为本项目原创编写，可自由修改替换
-- 发音能力依赖有道词典 / 百度翻译的公开接口，音质归功于它们
-- 界面设计参考了 Monkeytype（极简打字反馈）与 Duolingo（学习风主题）的思路
+•	mahavivo/english-wordlists
+四级 / 六级大纲词表来源，经 tools/build-wordbook.mjs 生成本项目内置词书。
+
+•	Free Dictionary API / dictionaryapi.dev
+可选的真人录音发音源，开源项目。
+
+•	jsDelivr
+开源 CDN，词库构建时用于拉取公开词表。
+
+•	有道词典 dictvoice、百度翻译 TTS
+公开发音接口，非开源项目，但为本项目自动发音链路提供了重要支持。
+
+•	浏览器 Web API
+SpeechSynthesis、Web Audio、Canvas 等，为本项目提供发音兜底、音效合成与走势图绘制能力。
+
+•	设计参考
+界面参考 Monkeytype 的极简打字反馈、Duolingo 的学习风主题思路。
+
+
 
 祝打字飞快，四六级顺利 🎯
