@@ -294,56 +294,8 @@ https://你的用户名.github.io/wordrush/
 
 想改内容、改配色、改功能？**请看 [GUIDE.md](GUIDE.md)**，那是一份写给零基础用户的图文指南，包含：
 
-- 怎么加自己的单词、短句、文章
-- 怎么改界面文字和配色
-- 怎么关掉不想用的功能
-- 怎么部署、怎么备份
-- 出错时怎么自己排查
-
-### 常见修改点速查
-
-| 我想改… | 改哪个文件 |
-|---|---|
-| 站点图标 / 标志配色 | `assets/favicon.svg`（方形图标）、`assets/logo.svg`（完整标志）。改里面 4 个 `stop-color` 即可 |
-| 顶栏标志的大小 | `assets/css/style.css` 里的 `.logo-mark` |
-| 站点名称 / 副标题 | `assets/js/i18n.js` 的 `app.name`、`app.slogan`、`app.docTitle` |
-| 加单词 / 短句 / 文章（手写） | `assets/js/data/cet4.js`、`cet6.js`、`phrases.js`、`passages.js` |
-| 更新或替换全量词库 | `tools/build-wordbook.mjs`，然后跑 `node tools/build-wordbook.mjs` |
-| 界面上的文字（中文 / 英文） | `assets/js/i18n.js` |
-| 配色、圆角、字体大小 | `assets/css/style.css` 顶部的变量区 |
-| 默认主题 / 默认模式 / 默认开关 | `assets/js/config.js` 的 `DEFAULT_SETTINGS` |
-| 默认内容源（现为四级大纲词汇） | 同上，`sourceId` |
-| 默认每组题目数量 | 同上，`itemCount` |
-| 发音源的优先级与超时 | `assets/js/speech.js` 顶部的 `PROVIDERS` 与 `speak()` 里的 `order` |
-| 成就徽章的解锁条件 | `assets/js/achievements.js` 的 `LIST` |
-| 打字音效的音色 | `assets/js/sounds.js` 的 `tone()` |
-| 打错判定的行为 | `assets/js/engine.js` 的 `handleInput()` |
-
----
 
 ## 常见问题
-
-<details>
-<summary><b>打开后是白屏、什么都看不到</b></summary>
-
-按 <kbd>F12</kbd> 打开开发者工具，切到 **Console（控制台）** 标签，看有没有红色报错。
-
-- 如果报错提到 `Cannot read properties of null`，通常是某个 JS 文件被删了或改名了，检查 `assets/js/` 目录是否完整。
-- 如果什么都没报，检查是不是把 `index.html` 放进了子文件夹但路径没改。
-
-本项目在初始化失败时会在页面上直接显示错误详情，方便截图反馈。
-</details>
-
-<details>
-<summary><b>换主题后颜色没变</b></summary>
-
-主题是通过 `<html data-theme="...">` 属性 + CSS 变量实现的。如果你改过 `style.css`，检查是否误删了 `html[data-theme="dark"] { ... }` 这样的整块定义。
-
-在控制台执行 `document.documentElement.getAttribute('data-theme')` 可以看到当前主题名。
-</details>
-
-<details>
-<summary><b>发音没有声音</b></summary>
 
 依次检查：
 
@@ -351,100 +303,7 @@ https://你的用户名.github.io/wordrush/
 2. **切换发音源**：设置 → 发音来源 → 改成「浏览器自带语音」，如果这个有声音说明是在线接口被网络挡住了。
 3. **系统音量 / 静音**：听起来很蠢，但确实常见。
 4. **浏览器不支持语音合成**：设置里点名「浏览器自带语音」如果完全没反应，换 Chrome 或 Edge。
-</details>
 
-<details>
-<summary><b>数据会不会丢？</b></summary>
-
-浏览器的 localStorage 在这几种情况下会被清空：
-
-- 手动清除浏览器数据（含「Cookie 及其他网站数据」）
-- 用无痕模式（本次会话结束后）
-- 浏览器存储空间紧张时被自动回收（少见）
-
-**所以重要数据请定期用「导出备份」存成 JSON 文件。** 这也是我们提供导入导出的原因。
-</details>
-
-<details>
-<summary><b>手机上能正常用吗？</b></summary>
-
-可以。界面是响应式的，手机浏览器打开后会自适应布局；点击练习区会唤起软键盘。
-
-不过实机打字练习本身还是键盘更合适，手机更适合用来复习单词和刷打卡。
-</details>
-
-<details>
-<summary><b>为什么「四级大纲词汇」是 4540 条，但源文件写的是「共 4615 词」？</b></summary>
-
-源文件声明 4615 条，其中有 75 条是**同一个词的不同词性**（例如 `bear` 的名词"熊"和动词"容忍"是分开两行的）。
-
-生成脚本会把它们**合并成一条**，释义之间用 `｜` 分隔，所以最终是 4540 条独立词条 —— 信息一条都没丢。六级同理：2273 → 2220。
-
-另外一个原因：源文件里还有 53 个空行和 28 行标题/分节标记（`A`、`B`…）不是词条。
-</details>
-
-<details>
-<summary><b>不想要那两本全量词库（体积太大 / 版权顾虑）</b></summary>
-
-删掉这两个文件：
-
-```
-assets/js/data/wordbook-cet4.js
-assets/js/data/wordbook-cet6.js
-```
-
-并在 `index.html` 里移除这两行：
-
-```html
-<script src="assets/js/data/wordbook-cet4.js"></script>
-<script src="assets/js/data/wordbook-cet6.js"></script>
-```
-
-网站会自动退回只使用手写精选内容（四级 466 词 / 六级 264 词），**其他功能完全不受影响** ——
-内容源注册表会自动跳过不存在的文件，不会报错。体积也会从 743 KB 降回约 288 KB。
-</details>
-
-<details>
-<summary><b>顺序练习练到一半，进度丢了？</b></summary>
-
-进度存在 `etp:progress` 里，跟着 localStorage 走。以下情况会重置：
-
-- 手动点了 **设置 → 数据 → 重置练习进度**
-- 清空浏览器数据 / 用无痕模式
-- 从备份导入时，**备份文件里没有 `progress` 字段** → 进度保持原样（不覆盖）
-
-另外：**一旦打开「打乱顺序」，进度就不再起作用**（随机练习没有"练到哪"的概念），
-关掉打乱后会从上次记下的位置继续。
-</details>
-
-<details>
-<summary><b>为什么「看中文打英文」有时会直接显示英文？</b></summary>
-
-因为当前条目**没有中文释义**（例如网络内容源按句拆分出来的句子、或自定义文本里你没填中文）。
-
-这时显示英文是**故意的优雅降级** —— 否则你既看不到中文也看不到英文，完全没法练。界面下方会给出说明。
-
-想让某份自定义内容支持中文模式，在「自定义文本」弹窗里的「中文释义」框中按行填写即可（第 N 行对应第 N 条）。
-</details>
-
-<details>
-<summary><b>宽松模式下我漏打一个字母，后面全红了</b></summary>
-
-这是**按位置比对**的必然结果，也是同类打字网站的通行做法：第 3 个字符只和第 3 个字符比，漏打一个就整体错位。
-
-**解决办法：按 <kbd>Backspace</kbd> 删掉重打。** 或者改用「严格模式」——它会当场拦住错误，从根上杜绝错位。
-</details>
-
-<details>
-<summary><b>能加自己的文章吗？</b></summary>
-
-能，而且有两条路：
-
-- **临时用**：点「自定义文本」→ 粘贴 → 开始练习。内容会存在本地，之后从「我的内容」一键调出。
-- **永久加**：编辑 `assets/js/data/sources.js`，照着现有格式往里加一篇。
-</details>
-
----
 
 ## 浏览器兼容性
 
